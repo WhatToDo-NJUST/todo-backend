@@ -99,7 +99,7 @@ public class UserController {
     @GetMapping("user_info")
     @ApiOperation(value = "获取用户信息", notes = "获取用户信息")
     public ResultBean<User> userInfo(@RequestHeader String token) {
-        int userId = JWTUtils.getIdByToken(token);//这里是之前的拦截器放行的。所以一定正确
+        String userId = JWTUtils.getIdByToken(token);//这里是之前的拦截器放行的。所以一定正确
 
         User one = userService.getById(userId);
         if (one == null) {
@@ -118,7 +118,7 @@ public class UserController {
     @ApiOperation(value = "修改头像", notes = "修改头像")
     public ResultBean iconUrl(@ApiParam(value = "图片链接", required = true) @Param("iconUrl") String iconUrl, @RequestHeader String token) {
         CheckUtil.requireNotEmpty(iconUrl, "iconUrl不能为空");
-        int userId = JWTUtils.getIdByToken(token);//这里是之前的拦截器放行的。所以一定正确
+        String userId = JWTUtils.getIdByToken(token);//这里是之前的拦截器放行的。所以一定正确
         UpdateWrapper updateWrapper = new UpdateWrapper();
 
         updateWrapper.eq("id", userId);
@@ -141,7 +141,7 @@ public class UserController {
     @ApiOperation(value = "修改用户名", notes = "修改用户名")
     public ResultBean changeUserName(@ApiParam(value = "用户名", required = true) @Param("username") String username, @RequestHeader String token) {
         CheckUtil.requireNotEmpty(username, "username不能为空");
-        int userId = JWTUtils.getIdByToken(token);//这里是之前的拦截器放行的。所以一定正确
+        String userId = JWTUtils.getIdByToken(token);//这里是之前的拦截器放行的。所以一定正确
         UpdateWrapper updateWrapper = new UpdateWrapper();
 
         updateWrapper.eq("id", userId);

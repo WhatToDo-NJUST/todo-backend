@@ -21,7 +21,7 @@ public class User {
     private static final long serialVersionUID = 1L;
     @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private String id;
 
     @ApiModelProperty("用户名")
     private String username;

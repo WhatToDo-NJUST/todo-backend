@@ -42,8 +42,8 @@ public class JWTUtils {
     public static DecodedJWT getToken(String token){
         return JWT.require(Algorithm.HMAC256(SIGNATURE)).build().verify(token);
     }
-    public static int getIdByToken(String token){
+    public static String getIdByToken(String token){
         DecodedJWT decodedJWT = getToken(token);
-        return Integer.parseInt(decodedJWT.getClaim("id").asString());
+        return decodedJWT.getClaim("id").asString();
     }
 }
