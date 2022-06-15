@@ -18,7 +18,7 @@ import java.util.List;
 public class TodoController {
     @Autowired
     ITodoService todoService;
-    @GetMapping("all")
+    @GetMapping("download")
     @ApiOperation(value = "请求所有个人todo", notes = "请求所有个人todo")
     public ResultBean<List<Todo>> userTodos(@RequestHeader String token) {
         QueryWrapper<Todo> queryWrapper = new QueryWrapper<>();
@@ -26,7 +26,7 @@ public class TodoController {
         List<Todo> todos = todoService.list(queryWrapper);
         return ResultBean.success(todos);
     }
-    @PostMapping("update")
+    @PostMapping("upload")
     @ApiOperation(value = "更新个人todo", notes = "更新个人todo")
     public ResultBean<Boolean> updateTodos(@RequestHeader String token,@RequestBody List<Todo> todos) {
         for (Todo todo : todos) {
