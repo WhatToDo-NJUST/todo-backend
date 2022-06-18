@@ -22,10 +22,10 @@ import java.time.LocalDateTime;
 public class Todo {
     @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
-    private String id;
+    private int id;
 
     @ApiModelProperty("用户ID")
-    private String userId;
+    private int userId;
 
     @ApiModelProperty("标题")
     private String title;
